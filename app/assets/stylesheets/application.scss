@@ -11,10 +11,14 @@
  * It is generally better to create a new file per style scope.
  *
  */
-
-
 @import "bootstrap";
 
 body {
 	padding: 10px;	
+}
+
+@media (min-width: 1200px) {
+	.col-lg-4 {
+	    width: 80%;
+	}
 }
