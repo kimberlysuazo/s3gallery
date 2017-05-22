@@ -1,27 +1,32 @@
 <h1><%= @album.title %></h1>
 
 
-<ul>
+<div class="row">
+    <div class="col-md-4">
 	<% @album.photos.each do |photo| %>
-		<li>
+	
+		<div class="img-thumbnail">		
 			<%= link_to(photo.image.url) do %>
 				<%= image_tag photo.image.url(:square) %>
 			<% end %>
-		</li>
+		</div>
 	<% end %>
-</ul>
+	</div>
+</div>
+
 
 <h2>Add a new photo</h2>
 
 <%= form_for(:photo, url: album_photos_path(@album), multipart: true) do |f| %>
-  
-  <div class="field">
+
+  <div class="btn btn-default btn-file" >
     <%= f.file_field :image %>
   </div>
-  <div class="actions">
+
+  <div class="btn">
     <%= f.submit 'Add Photo' %>
-    <%= link_to 'Back to Albums', albums_path, class: 'button' %>
   </div>
+  
 <% end %>
 
-<p>Total photos: <%= @album.photos.length %></p>
+<%= link_to 'Back to Albums', albums_path %>

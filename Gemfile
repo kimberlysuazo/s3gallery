@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

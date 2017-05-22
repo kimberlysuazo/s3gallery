@@ -1,9 +1,5 @@
 class PhotosController < ApplicationController
 
-	def index 
-		@album = Album.find_by(id:params[:album_id])
-	end
-
 	def create 
 		@album = Album.find_by(id: params[:album_id])
 		@photo = @album.photos.new(photo_params)

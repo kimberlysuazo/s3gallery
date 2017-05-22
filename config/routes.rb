@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
 
-  resources :albums do
-  	resources :photos
+  resources :albums , only: [:index, :new, :create, :show] do
+  	resources :photos, only: [:create]
 	end 
   
   root 'albums#index'
