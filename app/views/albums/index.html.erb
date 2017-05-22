@@ -3,9 +3,11 @@
 <ul>
 	<% @albums.each do |album| %>
 		<li>
-			<%= link_to(album) do %>
+			<%= link_to(album_photos_url(album)) do %>
 			<%= album.title %>
 			<% end %>
 		</li>
 	<% end %>
 </ul>
+
+<%= link_to "New Album", new_album_path %>

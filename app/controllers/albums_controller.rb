@@ -6,18 +6,17 @@ class AlbumsController < ApplicationController
 
 	def show
 		@album = Album.find_by(id: params[:id])
-		@photos = @album.photos
 	end	
 		
 	def new 
-
+		@album = Album.new
 	end 	
 
 	def create 
-		@album = Album.new(params[:title])
+		@album = Album.new(album_params)
  
   	@album.save
-  	redirect_to @album
+  	redirect_to albums_path
 	end 
 
 	private 
