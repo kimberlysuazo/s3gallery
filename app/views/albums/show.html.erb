@@ -1,5 +1,18 @@
 <h1><%= @album.title %></h1>
 
+<% flash.each do |type, message| %>
+    <div class="alert alert-<%= type %> alert-dismissable">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<% if type == "danger" %>
+			<% message.each do |msg| %>
+				<p><%= msg %></p>
+			<% end %>
+		<% else %>		
+   			<%= message %>
+		<% end %>		
+    </div>
+<% end %>
+
 <div class="container">
 	<div class="row">
 	    <div class="col-lg-4">
@@ -19,8 +32,11 @@
 
 <%= form_for(:photo, url: album_photos_path(@album), multipart: true) do |f| %>
 
+
+
   <div class="btn btn-default btn-file" >
-    <%= f.file_field :image %>
+    <%= file_field_tag 'images[]', type: :file, multiple: true %>
+    <% f.file_field :image %>
   </div>
 
   <div class="btn">

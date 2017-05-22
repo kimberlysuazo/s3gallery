@@ -2,16 +2,23 @@ class PhotosController < ApplicationController
 
 	def create 
 		@album = Album.find_by(id: params[:album_id])
-		@photo = @album.photos.new(photo_params)
-		if @photo.save
-      redirect_to @album, notice: 'Photo was successfully added.'
-     else
-       render action: 'index'
+		
+		if params[:images]
+      params[:images].each do |image|
+        photo = @album.photos.new(image: image)
+      
+				if photo.save
+					flash[:success] = 'Upload successful.'
+	    	else 
+	    		flash[:danger] = photo.errors.full_messages
+	     	end 	
+    	end
     end
+    redirect_to @album
 	end 
 
 	def photo_params
-		params.require(:photo).permit(:image)
+		params.require(:photo).permit(:images)
 	end 	
 
 end
